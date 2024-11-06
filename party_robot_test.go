@@ -129,3 +129,43 @@ func TestAssignTable(t *testing.T) {
 		})
 	}
 }
+func TestComputeDistance(t *testing.T) {
+	tests := []struct {
+		description string
+		x1, y1      float64
+		x2, y2      float64
+		want        float64
+	}{
+		{
+			description: "Distance between (1,1) and (4,5)",
+			x1:          1,
+			y1:          1,
+			x2:          4,
+			y2:          5,
+			want:        5,
+		},
+		{
+			description: "Distance between (0,0) and (3,4)",
+			x1:          0,
+			y1:          0,
+			x2:          3,
+			y2:          4,
+			want:        5,
+		},
+		{
+			description: "Distance between (0,0) and (0,0)",
+			x1:          0,
+			y1:          0,
+			x2:          0,
+			y2:          0,
+			want:        0,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.description, func(t *testing.T) {
+			if got := ComputeDistance(tt.x1, tt.y1, tt.x2, tt.y2); got != tt.want {
+				t.Errorf("ComputeDistance(%f, %f, %f, %f) = %f, want %f", tt.x1, tt.y1, tt.x2, tt.y2, got, tt.want)
+			}
+		})
+	}
+}

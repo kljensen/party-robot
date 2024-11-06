@@ -1,6 +1,9 @@
 package partyrobot
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 // Welcome greets a person by name.
 func Welcome(name string) string {
@@ -15,4 +18,12 @@ func HappyBirthday(name string, age int) string {
 // AssignTable assigns a table to each guest.
 func AssignTable(name string, table int, neighbor, direction string, distance float64) string {
 	return fmt.Sprintf("Complete this function")
+}
+
+// ComputeDistance calculates the distance between two points.
+func ComputeDistance(x1, y1, x2, y2 float64) float64 {
+	ydelta := y2 - y1
+	xdelta := x2 - x1
+	squareDistance := math.Pow(ydelta, 2) + math.Pow(xdelta, 2)
+	return math.Sqrt(squareDistance)
 }
